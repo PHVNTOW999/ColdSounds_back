@@ -34,3 +34,33 @@ class SinglsAdmin(admin.ModelAdmin):
         'name',
         'id',
     )
+
+@admin.register(models.Album)
+class AlbumsAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'id',
+    )
+    list_filter = [
+        'name',
+        'id',
+    ]
+    search_fields = (
+        'name',
+        'id',
+    )
+
+@admin.register(models.EP)
+class EPAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'id',
+    )
+    list_filter = [
+        'name',
+        'id',
+    ]
+    search_fields = (
+        'name',
+        'id',
+    )
