@@ -28,8 +28,32 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '217.78.239.164',
+    '192.168.56.1',
+    '192.168.56.1:3000',
+    'localhost',
+    'localhost:3000'
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1',
+    'http://217.78.239.164',
+    'http://192.168.56.1',
+    'http://192.168.56.1:3000',
+    'http://localhost',
+    'http://localhost:3000'
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 # Application definition
 
@@ -41,10 +65,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'main'
+    'main',
+    'corsheaders'
 ]
 
+# Warning!
+# When pushing uncomment "REST_FRAMEWORK"
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+}
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

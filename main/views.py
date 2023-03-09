@@ -1,4 +1,7 @@
-from rest_framework import generics
+from rest_framework import generics, renderers
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .models import Singer, Singl, Album, EP
 from .serializers import SingerSerializer, SinglSerializer, AlbumSerializer, EPSerializer
 
